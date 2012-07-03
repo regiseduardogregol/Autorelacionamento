@@ -1,0 +1,7 @@
+  <div class="control-group">
+    <%= builder.label :name, "Campo (Nome):", :class => 'control-label' %>
+    <div class="controls">
+    <%= builder.text_field :name %>
+    </div>
+  </div>
+

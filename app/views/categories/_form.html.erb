@@ -1,0 +1,32 @@
+<script>
+function add(){
+ $('a#add_element').click(function() {
+    $('#element .controls').clone().find('div .control-group').end().appendTo('.page-header');
+  });
+}
+
+
+
+</script>
+<%= form_for @category, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :category_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :category_id, Category.find(:all).collect{|c| [c.name, c.id]}, :prompt => "Escolha uma categoria", :class => 'text_field' %>
+    </div>
+  </div>
+</div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                categories_path, :class => 'btn' %>
+  </div>
+<% end %>
+
